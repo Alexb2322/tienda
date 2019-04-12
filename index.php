@@ -14,13 +14,38 @@
             <td>Cantidad: </td><td><input type="text" name="cantidad" ></td>
         </tr>
         <tr>
-            <td>Imagen: </td><td><input type="text" name="imagen" ></td>
+            <td>Imagen: </td><td><input type="file" name="imagen" ></td>
         </tr>
         
     </table><br>
         <center><input type="submit" value="Registrar"></center>             
     </form>
-    
+    <hr>
     </body>
 </html>
+
+<?php
+
+    include("database.php");
+    echo "<table border='1'>";
+    echo "<tr><th>Codigo</th><th>Nombre</th><th>Cantidad</th><th>.</th><th>.</th></tr>";
+    $sql="SELECT * FROM productos";
+    $result=$conn->query($sql);// tomar el sql y ejecutarlo
+    
+    if($result->num_rows >0){
+        while($row=$result->fetch_assoc()){
+            //echo "Si hay productos registrados";
+            echo "<tr>";
+            echo "<td>".$row['codigo_prod']."</td>";
+            echo "<td>".$row['nombre_prod']."</td>";
+            echo "<td>".$row['cantidad']."</td>";
+            echo "<td><a href='update.php'><img src='icons/edit.png'></a></td>";
+            echo "<td><a href='delete.php'><img src='icons/delete.png'></a></td>";
+            echo "</tr>";
+        }
+    }else{
+        echo "No hay productos registrados";
+    }
+
+?>
 

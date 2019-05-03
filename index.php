@@ -39,8 +39,8 @@
             echo "<td>".$row['codigo_prod']."</td>";
             echo "<td>".$row['nombre_prod']."</td>";
             echo "<td>".$row['cantidad']."</td>";
-            echo "<td><a href='update.php'><img src='icons/edit.png'></a></td>";
-            echo "<td><a href='delete.php'><img src='icons/delete.png'></a></td>";
+            echo "<td><a href='update.php?id=".$row['id']."&cod=".$row['codigo_prod']."&nom=".$row['nombre_prod']."&cant=".$row['cantidad']."'><img src='icons/edit.png'></a></td>";
+            echo "<td><a href='delete.php?id=".$row['id']."&cod=".$row['codigo_prod']."'><img src='icons/delete.png'></a></td>";
             echo "</tr>";
         }
     }else{
